@@ -48,7 +48,7 @@ Prerequisites
 Setup
 1. Clone the repository:
 ```bash
-git clone https://github.com/jcline7774/jcline7774.github.io.git
+git clone https://github.com/jcline7774/my_ai.git
 cd my_ai
 ```
 
