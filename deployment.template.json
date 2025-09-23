@@ -1,0 +1,28 @@
+{
+  "serviceName": "my-ai-tiger",
+  "containers": {
+    "web": {
+      "image": "docker.io/john7774/my_ai:latest",
+      "ports": {
+        "8080": "HTTP"
+      },
+      "environment": {
+        "OPENROUTER_MODEL": "microsoft/phi-3-mini-128k-instruct:free",
+        "DEEPSEEK_MODEL": "deepseek/deepseek-chat:free"
+      },
+      "command": ["gunicorn", "-b", "0.0.0.0:8080", "app:app"]
+    }
+  },
+  "publicEndpoint": {
+    "containerName": "web",
+    "containerPort": 8080,
+    "healthCheck": {
+      "healthyThreshold": 2,
+      "unhealthyThreshold": 2,
+      "timeoutSeconds": 5,
+      "intervalSeconds": 10,
+      "path": "/health",
+      "successCodes": "200-499"
+    }
+  }
+}

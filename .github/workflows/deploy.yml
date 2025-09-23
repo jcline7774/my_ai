@@ -1,0 +1,84 @@
+name: CI/CD to Lightsail
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push (amd64)
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64
+          push: true
+          tags: john7774/my_ai:latest
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Create deployment.json (inject secret)
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          cat > deployment.json <<'EOF'
+          {
+            "containers": {
+              "web": {
+                "image": "docker.io/john7774/my_ai:latest",
+                "ports": {
+                  "8080": "HTTP"
+                },
+                "environment": {
+                  "OPENROUTER_API_KEY": "${OPENROUTER_API_KEY}",
+                  "OPENROUTER_MODEL": "openai/gpt-4o",
+                  "DEEPSEEK_MODEL": "deepseek/deepseek-chat"
+                },
+                "command": ["gunicorn", "-b", "0.0.0.0:8080", "app:app"]
+              }
+            },
+            "publicEndpoint": {
+              "containerName": "web",
+              "containerPort": 8080,
+              "healthCheck": {
+                "healthyThreshold": 2,
+                "unhealthyThreshold": 2,
+                "timeoutSeconds": 5,
+                "intervalSeconds": 10,
+                "path": "/health",
+                "successCodes": "200-499"
+              }
+            }
+          }
+
+          EOF
+          echo "deployment.json created."
+
+      - name: Deploy to Lightsail
+        run: |
+          aws lightsail create-container-service-deployment \
+            --service-name my-ai-2001 \
+            --cli-input-json file://deployment.json
