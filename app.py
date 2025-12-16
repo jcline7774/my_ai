@@ -2,6 +2,11 @@
 import os
 from flask import Flask, request, jsonify, render_template
 import requests
+try:
+    from dotenv import load_dotenv
+    load_dotenv()  # Load .env file for local development
+except ImportError:
+    pass  # dotenv not available in production
 
 app = Flask(__name__)
 
