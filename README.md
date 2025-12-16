@@ -1,18 +1,70 @@
-MY-AI Chat Interface
+<div align="center">
 
-A multi-provider AI chat service with web interface, deployed on AWS Lightsail.
+# 🤖 MY-AI Chat Interface
 
-Features
+**A powerful multi-provider AI chat service with beautiful web interface**
 
-**Multiple AI Providers**: Groq (free), DeepSeek (free), OpenRouter (paid)
-**Web Chat Interface**: Clean, responsive UI with real-time chat
-**Configurable Parameters**: Temperature slider (0-1), token limits, provider selection
-**Docker Containerized**: Easy deployment and scaling
-**AWS Lightsail Ready**: Production deployment configuration
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Try_Now-blue?style=for-the-badge)](https://my-ai-tiger.1g77wttcjvvnt.us-east-1.cs.amazonlightsail.com)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://hub.docker.com)
+[![AWS](https://img.shields.io/badge/AWS_Lightsail-Deployed-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/lightsail/)
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 
-Live Demo
+![Screenshot](https://via.placeholder.com/800x400/2196F3/FFFFFF?text=MY-AI+Chat+Interface)
 
-🚀 **[Try it live](https://my-ai-tiger.1g77wttcjvvnt.us-east-1.cs.amazonlightsail.com)**
+</div>
+
+## ✨ Features
+
+<table>
+<tr>
+<td>
+
+### 🌐 **Multiple AI Providers**
+- 🆓 **Groq** (Free & Fast)
+- 🤖 **DeepSeek** (Free & Smart)
+- 💰 **OpenRouter** (Premium Models)
+
+</td>
+<td>
+
+### 📱 **Modern Interface**
+- ✨ Clean, responsive design
+- 💬 Real-time chat experience
+- 🎯 Configurable parameters
+
+</td>
+</tr>
+<tr>
+<td>
+
+### 🚀 **Easy Deployment**
+- 🐳 Docker containerized
+- ☁️ AWS Lightsail ready
+- 🔧 One-click setup
+
+</td>
+<td>
+
+### 🎯 **Customizable**
+- 🌡️ Temperature control (0-1)
+- 📊 Token limits
+- 🔄 Provider switching
+
+</td>
+</tr>
+</table>
+
+## 🚀 Live Demo
+
+<div align="center">
+
+### Experience MY-AI in action!
+
+[![Try Live Demo](https://img.shields.io/badge/🌐_Try_Live_Demo-Click_Here-success?style=for-the-badge&logo=rocket)](https://my-ai-tiger.1g77wttcjvvnt.us-east-1.cs.amazonlightsail.com)
+
+*No signup required • Free to use • Multiple AI providers*
+
+</div>
 
 API Usage
 
