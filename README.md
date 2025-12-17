@@ -6,7 +6,7 @@
 
 [![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Try_Now-blue?style=for-the-badge)](https://my-ai-tiger.1g77wttcjvvnt.us-east-1.cs.amazonlightsail.com)
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://hub.docker.com)
-[![AWS](https://img.shields.io/badge/AWS_Lightsail-Deployed-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/lightsail/)
+[![Render](https://img.shields.io/badge/Render-Deployed-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://render.com)
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 
 ![Screenshot](https://via.placeholder.com/800x400/2196F3/FFFFFF?text=MY-AI+Chat+Interface)
@@ -39,7 +39,7 @@
 
 ### 🚀 **Easy Deployment**
 - 🐳 Docker containerized
-- ☁️ AWS Lightsail ready
+- ☁️ Render ready
 - 🔧 One-click setup
 
 </td>
@@ -126,19 +126,20 @@ python app.py
 
 Deployment
 
-AWS Lightsail
-1. Build and push Docker image:
+Render
+1. Connect your GitHub repository to Render
+
+2. Create a new Web Service with these settings:
+   - **Build Command**: `docker build -t my-ai .`
+   - **Start Command**: `docker run -p $PORT:8080 my-ai`
+   - **Environment Variables**: Add your API keys
+
+3. Deploy automatically on git push
+
+Alternatively, use Docker:
 ```bash
-docker build --platform linux/amd64 -t your-username/my-ai:latest .
+docker build -t your-username/my-ai:latest .
 docker push your-username/my-ai:latest
-```
-
-2. Update `deployment-simple.json` with your image and API keys
-
-3. Deploy:
-```bash
-aws lightsail create-container-service --service-name my-ai --power micro --scale 1
-aws lightsail create-container-service-deployment --service-name my-ai --cli-input-json file://deployment-simple.json
 ```
 
 Configuration
@@ -182,7 +183,7 @@ Tech Stack
 **Backend**: Python Flask
 **Frontend**: Vanilla HTML/CSS/JavaScript
 **Containerization**: Docker
-**Deployment**: AWS Lightsail
+**Deployment**: Render
 **AI Providers**: Groq, DeepSeek, OpenRouter
 
 Contributing
