@@ -60,7 +60,7 @@
 
 ### Experience MY-AI in action!
 
-[![Try Live Demo](https://img.shields.io/badge/🌐_Try_Live_Demo-Click_Here-success?style=for-the-badge&logo=rocket)](https://my-ai-tiger.1g77wttcjvvnt.us-east-1.cs.amazonlightsail.com)
+[![Try Live Demo](https://img.shields.io/badge/🌐_Try_Live_Demo-Click_Here-success?style=for-the-badge&logo=rocket)](https://my-ai-90nq.onrender.com)
 
 *No signup required • Free to use • Multiple AI providers*
 
